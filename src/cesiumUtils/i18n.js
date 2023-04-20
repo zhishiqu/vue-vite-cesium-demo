@@ -56,7 +56,12 @@ export const lang = {
     'radar 1': 'radar 1',
     'radar 2': 'radar 2',
     satellite: 'satellite',
-    'sat survey area': 'sat survey area'
+    'sat survey area': 'sat survey area',
+    Reservoir: 'Reservoir',
+    changma: 'changma',
+    chijinxia: 'chijinxia',
+    shuangta: 'shuangta',
+    nanganqu: 'nanganqu'
 
   },
   中文: {
@@ -107,7 +112,12 @@ export const lang = {
     'radar 1': '雷达1',
     'radar 2': '雷达2',
     satellite: '卫星',
-    'sat survey area': '卫星探测区域'
+    'sat survey area': '卫星探测区域',
+    Reservoir: '水库',
+    changma: '昌马',
+    chijinxia: '赤金峡',
+    shuangta: '双塔',
+    nanganqu: '南干渠'
   }
 }
 
