@@ -2,12 +2,16 @@
  * @Author: zhishiqu
  * @Description: 
  * @Date: 2023-04-18 10:18:49
- * @LastEditTime: 2023-04-20 13:32:23
+ * @LastEditTime: 2023-04-21 10:43:58
  * @FilePath: \vue-vite-cesium-demo\src\cesiumUtils\initCesium.js
  */
 import Cesium from '@/cesiumUtils/cesium'
 import Global_ht from './Global_ht'
 import TilesetFlow from "@/cesiumUtils/tilesetFlow";
+
+import { getProviderViewModels } from "./tdt_provider.js";
+
+let [tiandiVecModel, tiandiImgModel] = getProviderViewModels();
 
 
 // eslint-disable-next-line no-unused-vars
@@ -55,20 +59,21 @@ export const initCesium = (viewerName = '3d') => {
         geocoder: false,
         navigationHelpButton: false,
         selectionIndicator: false,
-        baseLayerPicker: false,
+        // baseLayerPicker: false,
         showRenderLoopErrors: false,
         // terrainProvider: Cesium.createWorldTerrain(),
         terrainProvider: Global_ht.terrainProvider,
-        imageryProvider : new Cesium.WebMapServiceImageryProvider({
-            url: Global_ht.geoserverUrl,
-            layers : 'huitu:slh_13',
-            maximumLevel: 13,
-            parameters: {
-                service : 'WMS',
-                format: 'image/png',
-                transparent: true,
-              }  
-        }),
+        imageryProviderViewModels: [tiandiVecModel, tiandiImgModel],
+        // imageryProvider : new Cesium.WebMapServiceImageryProvider({
+        //     url: Global_ht.geoserverUrl,
+        //     layers : 'huitu:slh_13',
+        //     maximumLevel: 13,
+        //     parameters: {
+        //         service : 'WMS',
+        //         format: 'image/png',
+        //         transparent: true,
+        //       }  
+        // }),
     }
     const extendConf = {}
     const viewer = new Cesium.Viewer(containerName, { ...baseConf, ...extendConf })
@@ -105,48 +110,48 @@ export const initCesium = (viewerName = '3d') => {
     initCesiumHandler(viewer)
     operationHabitMid(viewer)
 
-    viewer.imageryLayers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
-        url: Global_ht.geoserverUrl,
-        layers : 'huitu:slh_15',
-        maximumLevel: 15,
-        parameters: {
-            service : 'WMS',
-            format: 'image/png',
-            transparent: true,
-          }  
-    }));
-    viewer.imageryLayers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
-        url: Global_ht.geoserverUrl,
-        layers : 'huitu:slh_17',
-        maximumLevel: 17,
-        parameters: {
-            service : 'WMS',
-            format: 'image/png',
-            transparent: true,
-          }  
-    }));
+    // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
+    //     url: Global_ht.geoserverUrl,
+    //     layers : 'huitu:slh_15',
+    //     maximumLevel: 15,
+    //     parameters: {
+    //         service : 'WMS',
+    //         format: 'image/png',
+    //         transparent: true,
+    //       }  
+    // }));
+    // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
+    //     url: Global_ht.geoserverUrl,
+    //     layers : 'huitu:slh_17',
+    //     maximumLevel: 17,
+    //     parameters: {
+    //         service : 'WMS',
+    //         format: 'image/png',
+    //         transparent: true,
+    //       }  
+    // }));
 
-    viewer.imageryLayers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
-        url: Global_ht.geoserverUrl,
-        layers : 'huitu:flh_dixing',
-        maximumLevel: 17,
-        parameters: {
-            service : 'WMS',
-            format: 'image/png',
-            transparent: true,
-          }  
-    }));
+    // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
+    //     url: Global_ht.geoserverUrl,
+    //     layers : 'huitu:flh_dixing',
+    //     maximumLevel: 17,
+    //     parameters: {
+    //         service : 'WMS',
+    //         format: 'image/png',
+    //         transparent: true,
+    //       }  
+    // }));
 
-    viewer.imageryLayers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
-        url: Global_ht.geoserverUrl,
-        layers : 'huitu:flh_biaozhu',
-        maximumLevel: 17,
-        parameters: {
-            service : 'WMS',
-            format: 'image/png',
-            transparent: true,
-          }  
-    }));
+    // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapServiceImageryProvider({
+    //     url: Global_ht.geoserverUrl,
+    //     layers : 'huitu:flh_biaozhu',
+    //     maximumLevel: 17,
+    //     parameters: {
+    //         service : 'WMS',
+    //         format: 'image/png',
+    //         transparent: true,
+    //       }  
+    // }));
 
     // viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
     //     url: "http://t0.tianditu.gov.cn/ter_w/wmts?tk=dfce9582892b549ec6662a5488d0391d",
